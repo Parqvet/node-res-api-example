@@ -15,7 +15,7 @@ app.use(express.json());
 
 // routes
 app.use(require('./routes/index'));
-app.use('/api/movies', require('./routes/movies-b'));
+app.use('/api/movies', require('./routes/movies'));
 
 // para que todas mis rutas empiecen con /api, en vez de escribirlo en los archivos de routes, lo puedo hacer desde aca: en todas mis rutas que iniciaran(movies), antes de poder ejecutarlas, le paso como primer parametro /api/movies, le estaria dicendo, todas estas rutas empiezan primero con /api/movies
 app.use('/api/movies', require('./routes/movies'));
