@@ -1,6 +1,8 @@
 const { Router } = require('express');
 const router = Router();
 
+const _ = require('underscore');
+
 // para ver los datos del archivo json lo importo desde aqui
 const movies = require('../movies.json');
 
@@ -21,6 +23,16 @@ router.post('/', (req, res) => {
     } else {
         res.status(500).json({error: "There was an error"})
     }
+})
+
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    _.each(movies, (movie, i) => {
+        if (movie.id == id) {
+            movies.splice(i, 1)
+        }
+    });
+    res.send(movies);
 })
 
 module.exports = router;
